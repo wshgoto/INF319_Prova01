@@ -1,7 +1,8 @@
 package br.com.voidstar.personCompany;
 
 public class Manager extends Person {
-    private double incentive;
+	// We don't need anymore any of these private parameters from each class
+  //  private double incentive;
 
     public Manager() {
     }
@@ -17,15 +18,15 @@ public class Manager extends Person {
     public double getIncentive() {
         double i = 0.0;
         if (getCompany() != null) if (getCompany().employed(this)) {
-            i = incentive;
+            i = getAdditional();
         }
         return i;
     }
 
-    public void setIncentive(double incentive) {
-        this.incentive = 0.0;
+    public void setIncentive(double newIncentive) {
+       // this.incentive = 0.0;
         if (getCompany() != null) if (getCompany().employed(this)) {
-            this.incentive = incentive;
+            setAdditional(newIncentive);
         }
     }
 }

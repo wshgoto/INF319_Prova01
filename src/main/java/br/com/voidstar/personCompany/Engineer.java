@@ -2,7 +2,8 @@ package br.com.voidstar.personCompany;
 
 public class Engineer extends Person {
 
-    private double projectBonus = 0.0;
+	// We don't need anymore any of these private parameters from each class
+//    private double projectBonus = 0.0;
 
     public Engineer() {
         super();
@@ -19,15 +20,15 @@ public class Engineer extends Person {
     public double getProjectBonus() {
         double pb = 0.0;
         if (getCompany() != null) if (getCompany().employed(this)) {
-            pb = projectBonus;
+            pb = getAdditional();
         }
         return pb;
     }
 
-    public void setProjectBonus(double projectBonus) {
-        this.projectBonus = 0.0;
+    public void setProjectBonus(double projectBonusnew) {
+        //this.projectBonus = 0.0;
         if (getCompany() != null) if (getCompany().employed(this)) {
-            this.projectBonus = projectBonus;
+            setAdditional(projectBonusnew);
         }
     }
 
