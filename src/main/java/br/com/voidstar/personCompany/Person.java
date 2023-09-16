@@ -43,6 +43,10 @@ public class Person {
     }
 
     public double getSalary() {
+    	//Too much complexity just to find person's incentive/bonus/commission
+    	//let's turn additional as a private parameter from Person class.
+    	//And we will need to change each of "projectBonus", "incentive",
+    	// and "commision" from other classes to comply with "additional".
         double additional = 0.0;
         if (this instanceof Engineer) {
             additional = ((Engineer) this).getProjectBonus();
@@ -60,11 +64,20 @@ public class Person {
     }
 
     public void selfHire(Company company, double salary) {
-
+    	
+    	//There's no need to set the person's bonus/incentive/commision
+    	// before the person is in fact hire.
+    	// Because, imagine if the person tried to hire herself and the action does not
+    	// occurs by the fact that the company that is hiring the person is actually
+    	// the same company that is its current company.
+    	// This will not work, and only will set Person's inecentive/bonus/additional
+    	// to "0.0".
         if (this instanceof Engineer) ((Engineer) this).setProjectBonus(0.0);
         else if (this instanceof Manager) ((Manager) this).setIncentive(0.0);
         else if (this instanceof Seller) ((Seller) this).setCommision(0.0);
-
+        //Also this looks like as too much code and a complicated logic to just set 
+        // a person's bonus/incentive/commision to Zero.
+        
         if (this.company == null) {
             this.company = company;
             this.salary = salary;
@@ -81,10 +94,16 @@ public class Person {
 
     public void selfDismiss(Company company) {
         boolean amEmployee;
-
+        
+        //Before dismissing herself, the Bonus/Incentive/Comission
+        //is being set to 0.0.
+        //This doesn't make sense if the person is unemployed 
+        //(i.e. this.company exists)
         if (this instanceof Engineer) ((Engineer) this).setProjectBonus(0.0);
         else if (this instanceof Manager) ((Manager) this).setIncentive(0.0);
         else if (this instanceof Seller) ((Seller) this).setCommision(0.0);
+        //Also this looks like as too much code and a complicated logic to just set 
+        // a person's bonus/incentive/commision to Zero.
 
         if (this.company != null) {
             if (this.company == company) {
