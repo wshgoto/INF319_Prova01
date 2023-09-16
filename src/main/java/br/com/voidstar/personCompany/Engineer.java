@@ -1,35 +1,29 @@
 package br.com.voidstar.personCompany;
 
 public class Engineer extends Person {
+	
+	public Engineer() {
+		super();
+	}
 
-	// We don't need anymore any of these private parameters from each class
-//    private double projectBonus = 0.0;
+	public Engineer(String name, String surname) {
+		super(name, surname);
+	}
 
-    public Engineer() {
-        super();
-    }
+	public Engineer(String name, String surname, double salary, Company company) {
+		super(name, surname, salary, company);
+	}
 
-    public Engineer(String name, String surname) {
-        super(name, surname);
-    }
+	public double getProjectBonus() {
+		//the method name is mantained, so it can still pass on tests
+		// the same happens to all other subclasses from Person
+		return getAdditional();
+	}
 
-    public Engineer(String name, String surname, double salary, Company company) {
-        super(name, surname, salary, company);
-    }
-
-    public double getProjectBonus() {
-        double pb = 0.0;
-        if (getCompany() != null) if (getCompany().employed(this)) {
-            pb = getAdditional();
-        }
-        return pb;
-    }
-
-    public void setProjectBonus(double projectBonusnew) {
-        //this.projectBonus = 0.0;
-        if (getCompany() != null) if (getCompany().employed(this)) {
-            setAdditional(projectBonusnew);
-        }
-    }
+	public void setProjectBonus(double projectBonusnew) {
+		//the method name is mantained, so it can still pass on tests
+		// the same happens to all other subclasses from Person
+		setAdditional(projectBonusnew);
+	}
 
 }
